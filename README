@@ -1,0 +1,45 @@
+/*TANASE Elena-Ramona - 313 CC*/
+
+Am definit structura pentru arbore, unde fiecare nod are legatura spre alte 4
+noduri fii, are compul de tip ( care poate fi 0 pentru nod intern sau 1 pentru
+nod frunza ), si 3 campuri pentru culoare (rosu, verde ai albatru).
+am definit structura pentru matricea in care am citit pixelii imaginii, care
+are campuri pentru cele 3 canale de culoare.
+Am definir structura pentru coada, care are elemente de tipul nodurilor din
+arbore.
+Am folosit 3 functii "red", "green" si "blue" care calculeaza conform
+formulelor pentru fiecare canal (RED, GREEN, BLUE) media aritmetică a valorilor
+din submatricea de pixeli care corespunde blocului la care suntem.
+Functia "similarity" calculeaza scorul similaritătii pentru
+blocul respectiv conform formulei.
+Functia "init_tree" initializeaza arborele, creand un nod fara fii (legaturile
+spre fii sunt legate la NULL), cu tipul si canalele de culoare date ca
+parametrii, a carui adresa o returneaza.
+Functia "add_node" formeaza arborele recursiv. Primeste ca parametrii arborele
+la care adaugam noduri, matricea conform careia adaugam nodurile, si canalele
+de culoare pentru blocul curent. Daca blocul nu trebuie divizat (scorul
+similaritatii este <= factorul dat) setam tipul nodului 1 ( frunza ) si ii
+calculam canalele de culoare pentru blocul la care suntem. Altfel, daca blocul
+trebuie divizat ( scorul similaritatii este > factorul dat ), alocam memorie
+pentru 4 noduri fii ai radacinii curente, si apelam functia recursiv de 4 ori,
+la fiecare pas fii devenind pe rand radacina si reluandu-se algoritmul. Tot in
+aceasta functie calculam in variabila  "nr_nod", numarul de noduri din graf,
+crescandu-i valoarea cu 4 de fiecare data cand divizam blocul (cand se formeaza
+4 noi noduri).
+Functia "inaltime" calculeaza recursiv inaltimea arborelui, facand maximul
+dintre inaltimile pe fiecare dintre cele 4 ramuri ale fiilor.
+Functia "no_leaves" calculeaza recursiv numarul de frunze, adunand frunzele
+de pe fiecare dintre cele 4 ramuri ale fiilor.
+Functia "first_level_leaves" calculeaza recursiv primul nivel din arbore care
+are frunze. Calculeaza minimul dintre minimul nivelului cu frunze pe fiecare
+dintre cele 4 ramuri ale fiilor.
+Functia "BFS" parcurge arborele in latime si retine nodurile in aceasta ordine
+in coada. Retinem radacina si apoi toti fii acesteia (). La urmatorul pas,
+primul fiu al radacinii devine "radacina", si ii adaugam toti fii in coada si
+repetam acest proces pana cand toate nodurile sunt adaugate in coada.
+Functia "free_tree" elibereaza memoria alocata arborelui.
+In main am deschis fisierele, si am verificat daca aceasta operatie s-a
+realizat cu succes. Am citit datele din fisier, am creat arborele, si in
+functie de cerinta care trebuie rezolvata afisam ceea ce se cere.
+La final eliberam memoria si inchidem fisierele.
+Punctaj local: 50/80 + 10(bonus)
